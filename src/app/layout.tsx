@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "../components/theme-provider";
+import { SidebarProvider, SidebarTrigger } from "../components/ui/sidebar";
+import { SearchBar } from "../components/search-bar";
+import Link from "next/link";
+import { Button } from "../components/ui/button";
+import CustomSidebar from "../components/custom-sidebar";
+import AppMenu from "../components/app-menu";
+import FixedMenu from "../components/fixed-menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +31,47 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="w-3/4 flex justify-between mx-auto min-w-[1400px] custom-menu">
+            <div className="h-screen w-[30%] pr-2 left-menu">
+              {/* <SidebarProvider>
+                <AppSidebar />
+                <main>
+                  <SidebarTrigger />
+                </main>
+              </SidebarProvider> */}
+              <div className="relative h-full">
+                <CustomSidebar />
+              </div>
+            </div>
+
+            <main className="w-4/5 border h-screen overflow-scroll no-scrollbar small-screen-main">
+              <div className="">{children}</div>
+            </main>
+            <div className="h-screen w-[30%] right-menu">
+              <div>
+                <div>
+                  <form action="">
+                    <div className="p-2">
+                      <SearchBar />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <AppMenu />
+            <FixedMenu />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
