@@ -1,9 +1,16 @@
-'use client';
+"use client";
 
-import { Bell, Heart, Home, Search,User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { GoHome, GoHomeFill } from "react-icons/go";
+import { FaHeart, FaRegHeart, FaUser } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa6";
+import {
+  IoNotificationsOutline,
+  IoNotificationsSharp,
+  IoSearch,
+} from "react-icons/io5";
 
 function AppMenu() {
   const pathName = usePathname();
@@ -12,27 +19,26 @@ function AppMenu() {
     {
       title: "Ana Sayfa",
       url: "/",
-      icon: Home,
-    },
-    {
-      title: "Beğenmeler",
-      url: "#",
-      icon: Heart,
+      icon: GoHome,
+      selectedIcon: GoHomeFill,
     },
     {
       title: "Bildirimler",
       url: "#",
-      icon: Bell,
+      icon: IoNotificationsOutline,
+      selectedIcon: IoNotificationsSharp,
     },
     {
       title: "Arama",
       url: "#",
-      icon: Search,
+      icon: IoSearch,
+      selectedIcon: IoSearch,
     },
     {
       title: "Profile",
       url: "#",
-      icon: User,
+      icon: FaRegUser,
+      selectedIcon: FaUser,
     },
   ];
   return (
@@ -49,7 +55,11 @@ function AppMenu() {
                     : ""
                 }`}
               >
-                <item.icon className={`fill-dark text-black dark:text-white ${pathName === item.url ? "dark:fill-white" : ""}`} />
+                {pathName === item.url ? (
+                  <item.selectedIcon size={24} />
+                ) : (
+                  <item.icon size={24} />
+                )}
               </Link>
             </li>
           ))}

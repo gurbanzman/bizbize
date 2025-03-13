@@ -5,13 +5,9 @@ import React from "react";
 import { Button } from "./ui/button";
 import {
   ChevronUp,
-  Home,
   User2,
-  Heart,
-  Bell,
   Sun,
   Moon,
-  Search,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {
@@ -21,6 +17,13 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useTheme } from "next-themes";
+import { GoHome, GoHomeFill } from "react-icons/go";
+import { FaHeart, FaRegHeart, FaRegUser, FaUser } from "react-icons/fa";
+import {
+  IoNotificationsSharp,
+  IoSearch,
+  IoNotificationsOutline,
+} from "react-icons/io5";
 
 function CustomSidebar() {
   const { setTheme } = useTheme();
@@ -30,28 +33,26 @@ function CustomSidebar() {
     {
       title: "Ana Sayfa",
       url: "/",
-      icon: Home,
-    },
-    {
-      title: "Beğenmeler",
-      url: "#",
-      icon: Heart,
+      icon: GoHome,
+      selectedIcon: GoHomeFill,
     },
     {
       title: "Bildirimler",
       url: "#",
-      icon: Bell,
+      icon: IoNotificationsOutline,
+      selectedIcon: IoNotificationsSharp,
     },
     {
       title: "Arama",
       url: "#",
-      icon: Search,
+      icon: IoSearch,
+      selectedIcon: IoSearch,
     },
   ];
   return (
     <div>
       <div>
-        <Button variant="link">
+        <Button variant="link" className="hover:no-underline app-element">
           <Link href={""}>Biz Bize</Link>
         </Button>
       </div>
@@ -67,8 +68,12 @@ function CustomSidebar() {
                     : ""
                 }`}
               >
-                <item.icon />
-                <span>{item.title}</span>
+                {pathName !== item.url ? (
+                  <item.icon size={19} />
+                ) : (
+                  <item.selectedIcon size={19} />
+                )}
+                <span className="text-sm">{item.title}</span>
               </Link>
             </li>
           ))}
@@ -104,10 +109,10 @@ function CustomSidebar() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex items-center p-2 gap-2 rounded-lg hover:bg-accent cursor-pointer">
-                <div className="flex items-center gap-1">
-                  <User2 /> Username
+                <div className="flex items-center gap-2 text-base">
+                  <User2 size={15}/> Username
                 </div>
-                <ChevronUp className="ml-auto" />
+                <ChevronUp className="ml-auto" size={15}/>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent

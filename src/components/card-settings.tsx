@@ -6,7 +6,7 @@ export function CardSettings() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={"link"} size={"lg"} className="hover:no-underline p-0 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus:ring-0">...</Button>
+        <Button variant={"link"} size={"lg"} className="hover:no-underline p-0 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus:ring-0 text-lg app-element">...</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>

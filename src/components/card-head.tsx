@@ -10,7 +10,7 @@ export function CardHead() {
     <HoverCard>
       <HoverCardTrigger asChild>
         <Button variant="link" className="hover:no-underline p-0">
-          <Link href={"/"}>gurbanzman</Link>
+          <Link href={"/"} className="app-element">gurbanzman</Link>
         </Button>
       </HoverCardTrigger>
       <HoverCardTrigger asChild>

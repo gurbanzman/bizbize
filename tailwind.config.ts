@@ -65,7 +65,15 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		fontFamily: {
+			lora: 'var(--font-lora)',
+			cabin: 'var(--font-cabin)',
+			quicksand: 'var(--font-quicksand)',
+			roboto: 'var(--font-roboto)',
+			poppins: 'var(--font-poppins)',
+			monsieur_la_doulaise: 'var(--font-Monsieur_La_Doulaise)',
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

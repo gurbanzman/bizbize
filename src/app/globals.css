@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body{
+  font-family: var(--font-mulish);
+}
 
 @layer base {
   :root {
@@ -201,4 +203,7 @@
 
 html.dark .app-menu{
   background: hsl(var(--background));
+}
+html.dark .app-element{
+  color: hsl(var(--foreground));
 }

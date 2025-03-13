@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Cabin,
+  Geist,
+  Geist_Mono,
+  Lora,
+  Monsieur_La_Doulaise,
+  Mulish,
+  Poppins,
+  Quicksand,
+  Roboto,
+} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
-import { SidebarProvider, SidebarTrigger } from "../components/ui/sidebar";
-import { SearchBar } from "../components/search-bar";
-import Link from "next/link";
-import { Button } from "../components/ui/button";
-import CustomSidebar from "../components/custom-sidebar";
-import AppMenu from "../components/app-menu";
-import FixedMenu from "../components/fixed-menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +21,47 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const mulish = Mulish({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-mulish",
+});
+
+const lora = Lora({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-lora",
+});
+
+const cabin = Cabin({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-cabin",
+});
+
+const quicksand = Quicksand({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-quicksand",
+});
+
+const roboto = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
+const poppins = Poppins({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-poppins",
+});
+
+const monsieur_la_doulaise = Monsieur_La_Doulaise({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-Monsieur_La_Doulaise",
 });
 
 export const metadata: Metadata = {
@@ -33,7 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${mulish.variable} ${lora.variable} ${cabin.variable} ${quicksand.variable} ${roboto.variable} ${poppins.variable} ${monsieur_la_doulaise.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -41,36 +85,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="w-3/4 flex justify-between mx-auto min-w-[1400px] custom-menu">
-            <div className="h-screen w-[30%] pr-2 left-menu">
-              {/* <SidebarProvider>
-                <AppSidebar />
-                <main>
-                  <SidebarTrigger />
-                </main>
-              </SidebarProvider> */}
-              <div className="relative h-full">
-                <CustomSidebar />
-              </div>
-            </div>
-
-            <main className="w-4/5 border h-screen overflow-scroll no-scrollbar small-screen-main">
-              <div className="">{children}</div>
-            </main>
-            <div className="h-screen w-[30%] right-menu">
-              <div>
-                <div>
-                  <form action="">
-                    <div className="p-2">
-                      <SearchBar />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <AppMenu />
-            <FixedMenu />
-          </div>
+          {children}
         </ThemeProvider>
       </body>
     </html>
