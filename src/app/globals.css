@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  list-style-type: none;
+}
+
 body{
   font-family: var(--font-mulish);
 }
@@ -206,4 +210,10 @@ html.dark .app-menu{
 }
 html.dark .app-element{
   color: hsl(var(--foreground));
+}
+
+@media all and (max-width: 1000px) {
+  .custom-hidden-btn{
+    display: none;
+  }
 }

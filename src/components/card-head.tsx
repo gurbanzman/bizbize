@@ -5,19 +5,26 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-export function CardHead() {
+export function CardHead({ title, subtitle, url, variant }) {
   return (
     <HoverCard>
-      <HoverCardTrigger asChild>
-        <Button variant="link" className="hover:no-underline p-0">
-          <Link href={"/"} className="app-element">gurbanzman</Link>
-        </Button>
-      </HoverCardTrigger>
-      <HoverCardTrigger asChild>
-        <Button variant="link" className="hover:no-underline text-zinc-500 p-0 ml-2">
-          <Link href={"/"}>@gurbanzman</Link>
-        </Button>
-      </HoverCardTrigger>
+      <div className={`flex ${variant === "row" ? "flex-row" : "flex-col"}`}>
+        <HoverCardTrigger asChild>
+          <Button variant="link" className="hover:no-underline p-0">
+            <Link href={url} className="app-element">
+              {title}
+            </Link>
+          </Button>
+        </HoverCardTrigger>
+        <HoverCardTrigger className={`${variant === "col" ? "mt-[-0.7rem]" : ""}`} asChild>
+          <Button
+            variant="link"
+            className="hover:no-underline text-zinc-500 p-0 ml-2"
+          >
+            <Link href={url}>{subtitle}</Link>
+          </Button>
+        </HoverCardTrigger>
+      </div>
       <HoverCardContent className="w-80">
         <div className="flex justify-between space-x-4">
           <Avatar>

@@ -38,13 +38,13 @@ function CustomSidebar() {
     },
     {
       title: "Bildirimler",
-      url: "#",
+      url: "/notifications",
       icon: IoNotificationsOutline,
       selectedIcon: IoNotificationsSharp,
     },
     {
       title: "Arama",
-      url: "#",
+      url: "/search",
       icon: IoSearch,
       selectedIcon: IoSearch,
     },
